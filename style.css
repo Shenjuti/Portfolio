@@ -67,13 +67,29 @@
     }
 
     .nav-wrap {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto auto;
-      align-items: center;
-      gap: 30px;
-    }
+    width: min(var(--max), calc(100% - 40px));
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand{
+    flex-shrink:0;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:1;
+    gap:22px;
+}
+
+.cv-link{
+    flex-shrink:0;
+}
 
     .brand {
       display: inline-flex;
@@ -704,7 +720,91 @@
       .experience-card ul { grid-column: 2; }
     }
 
-    @media (max-width: 860px) {
+    @media (max-width:860px){
+
+    :root{
+        --nav-height:70px;
+    }
+
+    .menu-button{
+        display:grid;
+    }
+
+    .cv-link{
+        display:none;
+    }
+
+    .nav-links{
+        position:fixed;
+        top:var(--nav-height);
+        left:0;
+        width:100%;
+        background:var(--bg);
+
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:center;
+
+        padding:40px 0;
+
+        gap:25px;
+
+        transform:translateY(-120%);
+        transition:.35s ease;
+
+        z-index:100;
+    }
+
+    .nav-links.open{
+        transform:translateY(0);
+    }
+
+    .nav-links a{
+        font-size:1.4rem;
+    }
+
+    .hero{
+        min-height:auto;
+        padding-top:calc(var(--nav-height) + 54px);
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .portrait-wrap{
+        width:min(100%,500px);
+        justify-self:start;
+    }
+
+    .mini-stats{
+        margin-top:48px;
+    }
+
+    .section-head{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .section-index{
+        position:static;
+    }
+
+    .experience-list,
+    .projects-grid,
+    .education-card,
+    .beyond-grid,
+    .reference-box{
+        margin-left:0;
+    }
+
+    .projects-grid{
+        gap:46px 24px;
+    }
+
+}
+
+    /* @media (max-width: 860px) {
       :root { --nav-height: 70px; }
 
       .nav-wrap { grid-template-columns: 1fr auto auto; }
@@ -761,7 +861,7 @@
       .reference-box { margin-left: 0; }
 
       .projects-grid { gap: 46px 24px; }
-    }
+    } */
 
     @media (max-width: 650px) {
       .container,
